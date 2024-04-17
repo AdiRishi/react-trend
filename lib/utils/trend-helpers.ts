@@ -1,3 +1,4 @@
+import { type Point } from './helper-types';
 import { normalize } from './math-helpers';
 
 interface DatasetBoundaries {
@@ -5,11 +6,6 @@ interface DatasetBoundaries {
   maxX: number;
   minY: number;
   maxY: number;
-}
-
-interface Point {
-  x: number;
-  y: number;
 }
 
 interface AutoDrawCssParams {

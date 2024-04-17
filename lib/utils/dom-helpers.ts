@@ -1,15 +1,5 @@
+import { type Point } from './helper-types';
 import { moveTo, getDistanceBetween, checkForCollinearPoints } from './math-helpers';
-
-// Defining the shape of the point object
-interface Point {
-  x: number;
-  y: number;
-}
-
-// Defining the shape of the options object for buildSmoothPath
-interface SmoothPathOptions {
-  radius: number;
-}
 
 export const buildLinearPath = (data: Point[]): string =>
   data.reduce((path, { x, y }, index) => {
@@ -21,7 +11,7 @@ export const buildLinearPath = (data: Point[]): string =>
     return `${path}${instruction} ${x},${y}\n`;
   }, '');
 
-export const buildSmoothPath = (data: Point[], { radius }: SmoothPathOptions): string => {
+export const buildSmoothPath = (data: Point[], { radius }: { radius: number }): string => {
   const [firstPoint, ...otherPoints] = data;
 
   return otherPoints.reduce((path, point, index) => {

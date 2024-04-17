@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, ComponentProps } from 'react';
+import { useEffect, useId, useMemo, useRef, type ComponentProps } from 'react';
 import { buildLinearPath, buildSmoothPath, injectStyleTag } from '../utils/dom-helpers';
 import { normalize } from '../utils/math-helpers';
 import { generateAutoDrawCss, normalizeDataset } from '../utils/trend-helpers';
@@ -35,9 +35,8 @@ export function Trend({
   const gradientId = `react-trend-vertical-gradient-${trendId}`;
   const pathRef = useRef<SVGPathElement>(null);
 
-  // We need at least 2 points to draw a graph.
-  if (!data || data.length < 2) {
-    return null;
+  if (data.length < 2) {
+    throw new Error('React-Trend needs at least 2 points to draw a graph');
   }
 
   useEffect(() => {

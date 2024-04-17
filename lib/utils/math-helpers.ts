@@ -1,7 +1,4 @@
-interface Point {
-  x: number;
-  y: number;
-}
+import { type Point } from './helper-types';
 
 interface NormalizeParams {
   value: number;
