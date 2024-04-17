@@ -1,1 +1,1 @@
-export { Trend, type TrendProps } from './Trend/Trend';
+export { Trend, type TrendProps } from './Trend';

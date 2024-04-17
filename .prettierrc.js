@@ -4,5 +4,5 @@ export default {
   trailingComma: 'es5',
   semi: true,
   plugins: ['@trivago/prettier-plugin-sort-imports'],
-  importOrder: ['<THIRD_PARTY_MODULES>', '^[./]'],
+  importOrder: ['<THIRD_PARTY_MODULES>', '^[@lib]', '^[@demo]', '^[./]'],
 };

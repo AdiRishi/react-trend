@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, type ComponentProps } from 'react';
-import { buildLinearPath, buildSmoothPath, injectStyleTag } from '../utils/dom-helpers';
-import { normalize } from '../utils/math-helpers';
-import { generateAutoDrawCss, normalizeDataset } from '../utils/trend-helpers';
+import { buildLinearPath, buildSmoothPath, injectStyleTag } from '@lib/utils/dom-helpers';
+import { normalize } from '@lib/utils/math-helpers';
+import { generateAutoDrawCss, normalizeDataset } from '@lib/utils/trend-helpers';
 
 export interface TrendProps extends ComponentProps<'svg'> {
   data: number[] | { value: number }[];
