@@ -45,7 +45,7 @@ export function Trend({
       const lineLength = pathRef.current.getTotalLength();
 
       const css = generateAutoDrawCss({
-        id: trendId,
+        id: CSS.escape(trendId),
         lineLength,
         duration: autoDrawDuration,
         easing: autoDrawEasing,
