@@ -52,7 +52,7 @@ export function Trend({
 
       injectStyleTag(css);
     }
-  }, [autoDraw, autoDrawDuration, autoDrawEasing]);
+  }, [trendId, autoDraw, autoDrawDuration, autoDrawEasing]);
 
   // `data` can either be an array of numbers:
   // [1, 2, 3]
@@ -82,7 +82,7 @@ export function Trend({
         minY: viewBoxHeight - padding,
         maxY: padding,
       }),
-    []
+    [plainValues, padding, viewBoxWidth, viewBoxHeight]
   );
 
   const path = useMemo(() => {

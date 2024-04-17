@@ -7,7 +7,7 @@ export const omit = <T extends object, K extends keyof T>(obj: T, keys: K[]): Om
 
       return {
         ...acc,
-        // @ts-expect-error
+        // @ts-expect-error - The underlying JS logic works
         [key]: obj[key],
       };
     },
