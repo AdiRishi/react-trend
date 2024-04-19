@@ -28,5 +28,5 @@
       "@demo/*": ["./demo/*"]
     }
   },
-  "include": ["demo", "lib"]
+  "include": ["demo-app", "lib"]
 }

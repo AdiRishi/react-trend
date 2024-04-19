@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "remix vite:dev -c vite-remix.config.ts",
     "lint": "eslint . && prettier --check .",
     "build": "tsc && vite build -c vite-lib.config.ts",
+    "build:demo": "remix vite:build -c vite-remix.config.ts",
     "preview": "vite preview",
     "format": "prettier --write ."
   },
@@ -15,6 +16,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@remix-run/dev": "^2.8.1",
+    "@remix-run/node": "^2.8.1",
+    "@remix-run/react": "^2.8.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
