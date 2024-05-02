@@ -1,4 +1,9 @@
+import tailwindStyles from '@demo/global-styles/tailwind.css?url';
+import { LinksFunction } from '@remix-run/node';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import { Layout as RootLayout } from './layouts/root-layout';
+
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStyles }];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,5 +24,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <RootLayout>
+      <Outlet />
+    </RootLayout>
+  );
 }

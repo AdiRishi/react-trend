@@ -3,6 +3,7 @@ export default {
   singleQuote: true,
   trailingComma: 'es5',
   semi: true,
-  plugins: ['@trivago/prettier-plugin-sort-imports'],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
   importOrder: ['<THIRD_PARTY_MODULES>', '^[@lib]', '^[@demo]', '^[./]'],
+  tailwindFunctions: ['clsx', 'cn', 'cva'],
 };
