@@ -1,8 +1,7 @@
 import { SVGProps, useState } from 'react';
-import { ContentSection } from '@demo/components/page-layout/content-section';
 import { TrendConfigurator } from '@demo/components/trend-configurator';
 import { Typography } from '@demo/components/ui/typography';
-import { GRADIENT_DATA, GradientKey } from '@demo/data/configurator';
+import { ConfiguratorConfig, DEFAULT_CONFIG, GRADIENT_DATA, GradientKey } from '@demo/data/configurator';
 import { Trend } from '@lib/index';
 import type { MetaFunction } from '@remix-run/node';
 
@@ -11,19 +10,25 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const [config, setConfig] = useState({
-    gradient: 'rainbow' as GradientKey,
-    width: 2,
-    radius: 10,
-    strokeLinecap: 'butt' as SVGProps<SVGPathElement>['strokeLinecap'],
-  });
+  const [config, setConfig] = useState<ConfiguratorConfig>(DEFAULT_CONFIG);
 
   return (
     <div>
-      <ContentSection className="flex flex-col items-center justify-center">
-        <Typography variant="h1">React Trend</Typography>
-        <Typography>Simple, elegant trend graphs for React.js.</Typography>
-        <div className="w-full">
+      <section className="flex flex-col items-center justify-center space-y-10 px-5 pt-10 md:px-0">
+        <div className="text-center">
+          <Typography variant="h1" className="mb-10">
+            React Trend
+          </Typography>
+          <Typography>Simple, elegant trend graphs for React.js.</Typography>
+          <Typography>
+            Originally project by{' '}
+            <a href="https://unsplash.github.io/react-trend/" target="_blank" rel="noreferrer">
+              Unsplash
+            </a>
+            . Rebuilt for modern React.js with ❤️
+          </Typography>
+        </div>
+        <div className="w-full max-w-2xl">
           <TrendDraw
             gradientKey={config.gradient}
             strokeWidth={config.width}
@@ -31,8 +36,10 @@ export default function Index() {
             radius={config.radius}
           />
         </div>
-        <TrendConfigurator onConfigChange={setConfig} />
-      </ContentSection>
+        <div className="w-full max-w-2xl">
+          <TrendConfigurator onConfigChange={setConfig} />
+        </div>
+      </section>
     </div>
   );
 }
