@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "remix vite:dev -c vite-remix.config.ts",
     "lint": "eslint . && prettier --check .",
+    "typecheck": "tsc --noEmit",
     "build": "tsc && vite build -c vite-lib.config.ts",
     "build:demo": "remix vite:build -c vite-remix.config.ts",
     "preview": "vite -c vite-remix.config.ts preview",
