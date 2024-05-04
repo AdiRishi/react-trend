@@ -1,13 +1,15 @@
 import { useEffect, useCallback, SVGProps } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import { Button } from '@demo/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@demo/components/ui/card';
+import { Card, CardContent } from '@demo/components/ui/card';
 import { Slider } from '@demo/components/ui/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@demo/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@demo/components/ui/toggle-group';
 import { Typography } from '@demo/components/ui/typography';
 import { DEFAULT_CONFIG, GRADIENT_DATA, GradientKey, STROKE_LINECAPS } from '@demo/data/configurator';
 import { useSearchParams } from '@remix-run/react';
-import { RefreshCcwIcon } from 'lucide-react';
+import { CopyIcon, RefreshCcwIcon } from 'lucide-react';
 
 export interface TrendConfiguratorProps {
   onConfigChange: (config: {
@@ -20,7 +22,7 @@ export interface TrendConfiguratorProps {
 
 export function TrendConfigurator({ onConfigChange }: TrendConfiguratorProps) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const gradient = searchParams.get('gradient') ?? DEFAULT_CONFIG.gradient;
+  const gradient = (searchParams.get('gradient') as GradientKey) ?? DEFAULT_CONFIG.gradient;
   const width = Number(searchParams.get('width') ?? DEFAULT_CONFIG.width);
   const radius = Number(searchParams.get('radius') ?? DEFAULT_CONFIG.radius);
   const strokeLinecap = searchParams.get('strokeLinecap') ?? DEFAULT_CONFIG.strokeLinecap;
@@ -115,6 +117,7 @@ export function TrendConfigurator({ onConfigChange }: TrendConfiguratorProps) {
                 <ToggleGroup
                   variant="outline"
                   type="single"
+                  defaultValue="butt"
                   onValueChange={handleStrokeLinecapChange}
                   className="justify-start"
                 >
@@ -157,17 +160,33 @@ export function TrendConfigurator({ onConfigChange }: TrendConfiguratorProps) {
         </Card>
       </TabsContent>
       <TabsContent value="code">
-        <Card>
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
+        <Card className="relative">
+          <div className="absolute right-2 top-2">
+            <Button variant="outline" size="icon">
+              <CopyIcon />
+            </Button>
+          </div>
+          <CardContent className="p-0">
+            <SyntaxHighlighter language="typescript" style={dark}>
+              {`
+import React from 'react';
+import Trend from '@arishi/react-trend';
+
+const YourComponent = () => (
+  <Trend
+    smooth
+    autoDraw
+    autoDrawDuration={3000}
+    autoDrawEasing="ease-out"
+    data={[0,2,5,9,5,10,3,5,0,0,1,8,2,9,0]}
+    gradient={${JSON.stringify(GRADIENT_DATA[gradient])}}
+    radius={${radius}}
+    strokeWidth={${width}}
+    strokeLinecap={'${strokeLinecap}'}
+  />
+);`}
+            </SyntaxHighlighter>
           </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
         </Card>
       </TabsContent>
     </Tabs>
