@@ -1,8 +1,48 @@
 {
   "name": "react-trend",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react-component",
+    "react",
+    "trend",
+    "svg",
+    "graph",
+    "data-visualization"
+  ],
+  "author": {
+    "name": "Adishwar Rishi",
+    "url": "https://github.com/AdiRishi"
+  },
+  "homepage": "https://github.com/AdiRishi/react-trend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdiRishi/react-trend"
+  },
+  "bugs": {
+    "url": "https://github.com/AdiRishi/react-trend/issues"
+  },
+  "license": "MIT",
+  "readme": "README.md",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "provenance": true
+  },
   "scripts": {
     "dev": "remix vite:dev -c vite-remix.config.ts",
     "lint": "eslint . && prettier --check .",
@@ -17,6 +57,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.1",
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
